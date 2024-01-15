@@ -35,7 +35,7 @@ public class CardatabaseApplication implements CommandLineRunner {
         repository.save(new Car("Mecedes Benz" , "S 550"
                 ,"Black","ADF-5504" , 2026 ,80700));
         for (Car car: repository.findAll()) {
-            logger.info(car.getBrand() + " " + car.getModel());
+            logger.info(car.getBrand() + " " + car.getModel() + " " + car.getColor() + " " + car.getPrice());
         }
     }
 }
