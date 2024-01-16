@@ -1,9 +1,8 @@
 package com.nana.cardatabase.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.util.List;
 
 @Entity
 public class Owner{
@@ -42,6 +41,18 @@ public class Owner{
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    @OneToMany(cascade = CascadeType.ALL , mappedBy="owner")
+    private List<Car> cars;
+
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return cars;
     }
 }
 
