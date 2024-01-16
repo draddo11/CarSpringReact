@@ -10,7 +10,6 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.PagingAndSortingRepository;
 
 import java.util.List;
 
@@ -40,9 +39,33 @@ public class CardatabaseApplication implements CommandLineRunner {
                 ,"Black","ADF-5504" , 2026 ,80700));
         for (Car car: repository.findAll()) {
             logger.info(car.getBrand() + " " + car.getModel() + " " + car.getColor() + " " + car.getPrice());
+            //Fetch cars by brand and Model
+            List<Car> findByBrandAndModel (String brand ,String model);
 
-            }
+            //Fetch cars by color sort by year
+            List<Car> findByColor(String color);
+
+            //Fetch cars by brand sort by year
+            List<Car> findByBrandOrderByYearAsc(String brand);
+
+            //Fetch cars by year
+            List<Car> findByYear(int year);
+
+            //Fetch cars by brand using SQL
+
+            @Query("select c from Car c where c.brand = ?1")
+                    List<Car> findbyBrand(String brand)
+
+            //Fetch cars by brand using SQL and have
+            // access to advanced options "Like" in CrudRepository
+            @Query("select c from Car c where c.brand like *&1")
+                    List<Car> findByBrandEndsWith(String brand)
+
+                    // Pagination and Sorting for large amounts of data helps sort
+                                // data into meaninngful data  PagingAndSortingRepositoryg
+
+                                pagingAndSortingReposiroty <Car, Long>{
 
         }
     }
-
+}
