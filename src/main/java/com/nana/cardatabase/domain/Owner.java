@@ -46,29 +46,29 @@ public class Owner{
         this.lastname = lastname;
     }
 
-    @OneToMany(cascade = CascadeType.ALL , mappedBy="owner")
-    private List<Car> cars;
-
-
-    public void setCars(List<Car> cars) {
-        this.cars = cars;
-    }
-
-    public List<Car> getCars() {
-        return cars;
-    }
-//    @ManyToMany(cascade=CascadeType.PERSIST)
-//    @JoinTable(name="car_owner",
-//        joinColumns = {@JoinColumn(name="ownerid")},
-//        inverseJoinColumns = {@JoinColumn(name="id")})
-//    private Set<Car> cars = new HashSet<Car>();
+//  @OneToMany(cascade = CascadeType.ALL , mappedBy="owner")
+//    private List<Car> cars;
 //
-//    public Set<Car> getCars(){
-//        return cars;
-//    }
-//    public void setCars(Set<Car> cars) {
+//
+//    public void setCars(List<Car> cars) {
 //        this.cars = cars;
 //    }
+//
+//    public List<Car> getCars() {
+//        return cars;
+//    }
+    @ManyToMany(cascade=CascadeType.PERSIST)
+    @JoinTable(name="car_owner",
+        joinColumns = {@JoinColumn(name="ownerid")},
+        inverseJoinColumns = {@JoinColumn(name="id")})
+    private Set<Car> cars = new HashSet<Car>();
+
+    public Set<Car> getCars(){
+        return cars;
+    }
+    public void setCars(Set<Car> cars) {
+        this.cars = cars;
+    }
 }
 
 
