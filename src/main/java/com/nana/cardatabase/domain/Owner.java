@@ -1,5 +1,7 @@
 package com.nana.cardatabase.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 //import org.hibernate.mapping.Set;
 
@@ -8,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Owner{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -20,7 +23,19 @@ public class Owner{
             super();
             this.firstname = firstname;
             this.lastname = lastname;
-        }
+    }
+    @JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL , mappedBy="owner")
+    private List<Car> cars;
+
+
+    public void setCars(List<Car> cars) {
+        this.cars = cars;
+    }
+
+    public List<Car> getCars() {
+        return cars;
+    }
 
     public long getOwnerid() {
         return ownerid;
@@ -45,30 +60,21 @@ public class Owner{
     public void setLastname(String lastname) {
         this.lastname = lastname;
     }
-
-//  @OneToMany(cascade = CascadeType.ALL , mappedBy="owner")
-//    private List<Car> cars;
+    //    @ManyToMany(cascade=CascadeType.PERSIST)
+//    @JoinTable(name="car_owner",
+//        joinColumns = {@JoinColumn(name="ownerid")},
+//        inverseJoinColumns = {@JoinColumn(name="id")})
+//    private Set<Car> cars = new HashSet<Car>();
 //
-//
-//    public void setCars(List<Car> cars) {
-//        this.cars = cars;
-//    }
-//
-//    public List<Car> getCars() {
+//    public Set<Car> getCars(){
 //        return cars;
 //    }
-    @ManyToMany(cascade=CascadeType.PERSIST)
-    @JoinTable(name="car_owner",
-        joinColumns = {@JoinColumn(name="ownerid")},
-        inverseJoinColumns = {@JoinColumn(name="id")})
-    private Set<Car> cars = new HashSet<Car>();
+//    public void setCars(Set<Car> cars) {
+//        this.cars = cars;
+//    }
 
-    public Set<Car> getCars(){
-        return cars;
-    }
-    public void setCars(Set<Car> cars) {
-        this.cars = cars;
-    }
+
+
 }
 
 

@@ -101,14 +101,14 @@ public class Car {
         this.owner = owner;
     }
 
-    @ManyToMany(mappedBy = "cars")
-    private Set<Owner> owners = new HashSet<Owner>();
-
-    public Set<Owner> getOwners() {
-        return owners;
-    }
-
-    public void setOwners(Set<Owner> owners) {
-       this.owners = owners;
-    }
+//    @ManyToMany(mappedBy = "cars")
+//    private Set<Owner> owners = new HashSet<Owner>();
+//
+//    public Set<Owner> getOwners() {
+//        return owners;
+//    }
+//
+//    public void setOwners(Set<Owner> owners) {
+//       this.owners = owners;
+//    }
 }
