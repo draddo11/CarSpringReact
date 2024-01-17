@@ -35,9 +35,9 @@ public class CardatabaseApplication implements CommandLineRunner {
 
     @Override
     public void run (String...args) throws Exception{
-        Owner owner1 = new Owner("Mark" ,"Johnson");
-        Owner owner2= new Owner("Nana" ,"Appiah");
-        Owner owner3= new Owner ("Adjei", "Mensah" );
+        Owner owner1 = new Owner("Mark","Johnson");
+        Owner owner2= new Owner("Nana","Appiah");
+        Owner owner3= new Owner ("Adjei","Mensah");
         orepository.saveAll(Arrays.asList(owner1,owner2,owner3));
         repository.save(new Car("Ford" , "Mustang"
                 ,"Red","ADF-1234" , 2024 ,56700, owner1));

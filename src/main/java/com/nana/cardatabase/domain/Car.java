@@ -3,6 +3,9 @@ package com.nana.cardatabase.domain;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
+import java.util.Set;
+
 @Entity
 public class Car {
     @Id
@@ -97,4 +100,15 @@ public class Car {
     public void setOwner(Owner owner) {
         this.owner = owner;
     }
+
+//    @ManyToMany(mappedBy = "cars")
+//    private Set<Owner> owners= new HashSet<Owner>();
+//
+//    public Set<Owner> getOwners() {
+//        return owners;
+//    }
+//
+//    public void setOwners(Set<Owner> owners) {
+//       this.owners = owners;
+//    }
 }
