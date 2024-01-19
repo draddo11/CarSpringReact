@@ -15,5 +15,5 @@ public interface CarRepository extends
     List<Car> findByBrand (@Param("brand")String brand);
 
     //fetch cars by color
-    List<Car> findbyColor(@Param("color") String color);
+    List<Car> findByColor(@Param("color") String color);
 }
