@@ -7,8 +7,8 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
 import java.util.List;
 
-
-@RepositoryRestResource(path="vehicles")
+//(path="vehicles")
+@RepositoryRestResource
 public interface CarRepository extends
         CrudRepository<Car,Long> {
     //fetch cars by brands
