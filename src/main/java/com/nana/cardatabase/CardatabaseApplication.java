@@ -1,9 +1,6 @@
 package com.nana.cardatabase;
 
-import com.nana.cardatabase.domain.Car;
-import com.nana.cardatabase.domain.CarRepository;
-import com.nana.cardatabase.domain.Owner;
-import com.nana.cardatabase.domain.OwnerRepository;
+import com.nana.cardatabase.domain.*;
 import org.slf4j.ILoggerFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,12 +23,15 @@ public class CardatabaseApplication implements CommandLineRunner {
     private CarRepository repository;
     @Autowired
     private OwnerRepository orepository;
+    @Autowired
+    private UserRepository userRepository;
 
     public static void main(String[] args) {
         SpringApplication.run
                 (CardatabaseApplication.class, args);
         logger.info("App is going hard !!");
     }
+
 
     @Override
     public void run (String...args) throws Exception{
@@ -51,6 +51,8 @@ public class CardatabaseApplication implements CommandLineRunner {
             logger.info(car.getBrand() + " " + car.getModel() + " " + car.getColor() + " " + car.getPrice());
 
             }
+        userRepository.save(new User("user","$2a$12$n0EE4yUwqKwskjsPOpGfd.I//d9NuLyDoj8I.qvoyxYMwXjf43UyK"
+                ,"USER"));
 
         }
     }
