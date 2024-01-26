@@ -16,13 +16,20 @@ public class UserDetailsServiceImpl implements
     @Override
     public UserDetails loadUserByUsername (String username)
         throws UsernameNotFoundException {
-        Optional<User> user =
+        Optional<com.nana.cardatabase.domain.User> user =
                 repository.findByUsername(username);
         User.UserBuilder builder = null;
         if (user.isPresent()){
-            User currentUser =user.get();
+            com.nana.cardatabase.domain.User currentUser =user.get();
             builder=
-
+                    org.springframework.security.core.userdetails.
+                            User.withUsername(username);
+            builder.password(currentUser.getPassword());
+            builder.roles(currentUser.getRole());
+        }else{
+            throw new UsernameNotFoundException("User not Found. ");
         }
+        return builder.build();
     }
+
 }
