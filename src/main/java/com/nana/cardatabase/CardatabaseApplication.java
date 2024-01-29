@@ -51,12 +51,12 @@ public class CardatabaseApplication implements CommandLineRunner {
             logger.info(car.getBrand() + " " + car.getModel() + " " + car.getColor() + " " + car.getPrice());
 
             }
-        //uUsername: user, passowrd: user
-        userRepository.save(new User("user","$2a$12$n0EE4yUwqKwskjsPOpGfd.I//d9NuLyDoj8I.qvoyxYMwXjf43UyK"
+        //Username: user, passowrd: aseda
+        userRepository.save(new User("user","$2a$12$lmFHWixh.psGU3635vx0a.pDYEK.fslIWByTSRCkAF.dGaEIMHPl6"
                 ,"USER"));
 
         //Username :admin , password: admin
-        userRepository.save(new User("admin" ,"$2a$12$CgQLC7pWz0KNQe.WTEyyd.OajP5YYENEvFmvm.tEmdrZiKJTLV/Z."
+        userRepository.save(new User("admin" ,"$2a$12$lmFHWixh.psGU3635vx0a.pDYEK.fslIWByTSRCkAF.dGaEIMHPl6"
         ,"ADMIN"));
 
         }
